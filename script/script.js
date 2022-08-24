@@ -6,8 +6,11 @@ const jump = () => {
     mario.classList.add('jump');
 
     setTimeout(() => {
+        
         mario.classList.remove('jump');
-    },500)
+
+    }, 500);
+
 }
 
 /* A loop that is checking if the pipe is in the same position as the mario. If it is, it will stop the
@@ -15,25 +18,23 @@ game. */
 const loop = setInterval(() => {
     console.log('loop')
 
-    const pipePosition = pipe.ofsetleft;
-    const marioPosition = + window.getComputedStyle(mario).bottom.replace('px', ' ');
+    const pipePosition = pipe.ofsetLeft;
+    const marioPosition = window.getComputedStyle(mario).bottom.replace('px', '120');
     
-    if (pipePosition < 120 && pipePosition > 0 &&  marioPosition <80) {
+    if (pipePosition < 120 && pipePosition > 0 && marioPosition < 80 ) {
 
         pipe.style.animation = 'none';
         pipe.style.left = `${pipePosition}px`;
 
-        pipe.style.animation = 'none';
+        mario.style.animation = 'none';
         mario.style.bottom = `${marioPosition}px`;
 
         mario.src = './imagens/game-over.png';
         mario.style.width = '75px';
-        mario.style.marginLeft = '50px';
+        mario.style.marginLeft = '40px';
 
         clearInterval(loop);
-        
     }
-
 }, 10);
 
 document.addEventListener('keydown', jump);
